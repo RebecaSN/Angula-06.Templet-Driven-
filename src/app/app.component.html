@@ -1,0 +1,135 @@
+<div > 
+    <mat-card class="containder">
+        <mat-card-header>
+            <mat-card-title class="titulo">Cadastre-se pelo método: Template Driven Forms</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form  action="#" #form="ngForm" (ngSubmit)="submit()">
+                <div class="Form">
+                    <mat-form-field class="campos" appearance="fill">
+                        <mat-label>Nome:</mat-label>
+                        <input class="ipt" type="text" matInput placeholder="Digite aqui o seu nome"[(ngModel)]="Nome" name="nome" required minlength="3" #inputNome="ngModel">
+                        <mat-error *ngIf="inputNome.invalid">
+                            <span *ngIf="inputNome.errors?.['minlength']">Você não digitou o minino de caracteres </span>
+                            <span *ngIf="inputNome.errors?.['required']">Esse campo se encontra inválido</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field  class="campos" appearance="fill">
+                        <mat-label>Sobrenome:</mat-label>
+                        <input class="ipt" type="text" matInput placeholder="Digite aqui o seu sobrenome" [(ngModel)]="Sobrenome" name="Sobrenome" required minlength="5" #inputSobrenome="ngModel">
+                        <mat-error *ngIf="inputSobrenome.invalid">
+                            <span *ngIf="inputSobrenome.errors?.['minlength']"> Você não digitou o minino de caracteres</span>
+                            <span *ngIf="inputSobrenome.errors?.['required']">Esse campo se encontra inválido</span>
+                        </mat-error>
+                    </mat-form-field>
+                    
+                   
+
+                    <mat-form-field  class="campos" appearance="fill">
+                        <mat-label>Username:</mat-label>
+                        <input class="ipt" type="text" matInput placeholder="Digite aqui o seu nome de usuario"[(ngModel)]="Username" name="Username" required minlength="6" #inputUsername="ngModel">
+                        
+                        <mat-error *ngIf="inputUsername.invalid">
+                            <span *ngIf="inputUsername.errors?.['minlength']">Você não digitou o minino de caracteres</span>
+                            <span *ngIf="inputUsername.errors?.['required']">Esse campo se encontra inválido</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field  class="campos" appearance="fill">
+                        <mat-label>CPF:</mat-label>
+                        <input class="ipt" type="text" matInput placeholder="Digite aqui o seu CPF"[(ngModel)]="CPF" name="CPF" required minlength="11" #inputCPF="ngModel">
+                        <mat-error *ngIf="inputCPF.invalid">
+                            <span *ngIf="inputCPF.errors?.['minlength']">Você não digitou o minino de caracteres</span>
+                            <span *ngIf="inputCPF.errors?.['required']">Esse campo se encontra inválido</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div class="telefone">
+                        <mat-form-field  class="campos" appearance="fill">
+                            <mat-label>Telefone:</mat-label>
+                            <input class="ipt" type="tel" matInput placeholder="Digite aqui o seu numero de telefone"[(ngModel)]="Telefone" name="Telefone" required minlength="11" #inputTelefone="ngModel">
+                            <mat-error *ngIf="inputTelefone.invalid">
+                                <span *ngIf="inputTelefone.errors?.['minlength']">Você não digitou o minino de caracteres</span>
+                                <span *ngIf="inputTelefone.errors?.['required']">Esse campo se encontra inválido</span>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+
+                    <mat-form-field  class="campos" appearance="fill">
+                        <mat-label>Endereço:</mat-label>
+                        <input class="ipt" type="text" matInput placeholder="Digite aqui o seu Endereço"[(ngModel)]="Endereco" name="Endereco"  required=""  #inputEndereco="ngModel">
+                        <mat-error *ngIf="inputEndereco.invalid">
+                            <span *ngIf="inputEndereco.errors?.['required']">Esse campo se encontra inválido</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field  class="campos"appearance="fill">
+                        <mat-label>Complemento:</mat-label>
+                        <input class="ipt" type="text" matInput placeholder="Digite aqui o complemento de seu endereço" [(ngModel)]="Complemento" required="" name="Complemento" #inputComplemento="ngModel">
+                        <mat-error *ngIf="inputComplemento.invalid">
+                            <span *ngIf="inputComplemento.errors?.['required']">Esse campo se encontra inválido</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                  <div class="senha">
+                    <mat-form-field class="campos" appearance="fill">
+                        <mat-label>Senha:</mat-label>
+                        <input class="ipt" type="password" matInput placeholder="Digite aqui a sua senha"[(ngModel)]="Senha" name="senha" required minlength="8" #inputSenha="ngModel" #inputs>
+                        <mat-error *ngIf="inputSenha.invalid">
+                            <span *ngIf="inputSenha.errors?.['minlength']">Você não digitou o minino de caracteres</span>
+                            <span *ngIf="inputSenha.errors?.['required']">Esse campo se encontra inválido</span>
+                        </mat-error>
+                    </mat-form-field>
+                    
+                    <mat-form-field class="campos" appearance="fill">
+                        <mat-label>Confirme a sua senha:</mat-label>
+                        <input type="password" matInput placeholder="Digite aqui a mesma senha digitada acima" required minlength="8" [(ngModel)]="Senha2" name="senha2"  #inputSenha2="ngModel" #inputs2 > 
+                        <div>
+                            <span class="vermelho" *ngIf="inputs.value !== inputs2.value">Os dois campos de senha não são iguais</span>
+                        </div>
+                    </mat-form-field>
+                  </div>
+                   </div>
+                
+                 <div class="botao">
+                    <button  (click)="openDialog()" class="btn" mat-raised-button type="submit" [disabled]="inputNome.invalid || inputSobrenome.invalid || inputUsername.invalid || inputSenha.invalid || inputComplemento.invalid || inputEndereco.invalid || inputTelefone.invalid || inputCPF.invalid || inputSenha2.invalid "> Enviar</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
